@@ -210,12 +210,14 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Continue";
                             PauseProgressBar();
                             progressBar.Text = @"Paused";
+                            MessageBox.Show("Operation Paused");
                             dataGridView.Refresh();
                             break;
                         case "Continue":
                             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
                             ContinueProgressBar();
                             progressBar.Text = @"Continued";
+                            MessageBox.Show("Operation Continued");
                             dataGridView.Refresh();
                             break;
                     }
