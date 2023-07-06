@@ -26,15 +26,8 @@ namespace DataProcessingApplicationDesign
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold);
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-
-            dataGridView.Columns[4].DefaultCellStyle.NullValue = null;
-            dataGridView.Rows[0].Cells[3].Value = "Browse";
-            dataGridView.Columns[4].DefaultCellStyle.NullValue = "Clear";
-            dataGridView.Columns[5].DefaultCellStyle.NullValue = "Start";
-            dataGridView.Columns["cmdClearCancel"].ReadOnly = false;
-            dataGridView.Columns["cmdStartPauseContinue"].ReadOnly = false;
-
             dataGridView.ReadOnly = false;
+
         }
 
         private void InitializeProgressBar()
@@ -163,8 +156,6 @@ namespace DataProcessingApplicationDesign
                         objectForm.ShowDialog();
                         clickedCell.Value = "Remove";
                         dataGridView.Refresh();
-                        clickedCell.ReadOnly = true;
-
                     }
                     else if (clickedCell.Value.ToString() == "Remove")
                     {
@@ -174,6 +165,7 @@ namespace DataProcessingApplicationDesign
                         }
                         else {
                             MessageBox.Show("No Row/s found!");
+                            clickedCell.Value = "Browse";
                             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Browse";
                             dataGridView.Refresh();
                         } 
@@ -183,14 +175,16 @@ namespace DataProcessingApplicationDesign
                 {
                     if (clickedCell.Value.ToString() == "Clear")
                     {
-                            dataGridView.Rows.Clear();
-                            dataGridView.Rows[0].Cells[3].Value = "Browse";
-                            dataGridView.Columns[4].DefaultCellStyle.NullValue = "Cancel";
-                            dataGridView.Refresh();
+                        MessageBox.Show("Cleared");
+                        dataGridView.Rows[0].Cells[3].Value = "Browse";
+                        dataGridView.Rows[0].Cells[4].Value = "Cancel";
+                        dataGridView.Rows[0].Cells[5].Value = "Start";
+                        dataGridView.Refresh();
                     }
                     else if (clickedCell.Value.ToString() == "Cancel")
                     {
-                        this.Close();
+                        StopProgressBar();
+                        clickedCell.Value = "Clear";
                     }
                 }
                 else if (clickedCell.OwningColumn.Name == "cmdStartPauseContinue")
@@ -222,7 +216,6 @@ namespace DataProcessingApplicationDesign
                         dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
                         ContinueProgressBar();
                         progressBar.Text = "Continued...";
-                        MessageBox.Show("Operation Continued");
                     }
                 }
 
@@ -230,22 +223,11 @@ namespace DataProcessingApplicationDesign
             }
         }
 
-        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            if (e.ColumnIndex == colIcon.Index && e.Value == null)
-            {
-                
-                e.Value = null;
-                e.FormattingApplied = true;
-            }
-        }
-
-        private void dataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (e.ColumnIndex == colIcon.Index)
-            {
-                e.Cancel = true;
-            }
+            e.Row.Cells["cmdBrowsRemove"].Value = "Browse";
+            e.Row.Cells["cmdClearCancel"].Value = "Clear";
+            e.Row.Cells["cmdStartPauseContinue"].Value = "Start";
         }
     }
 }
