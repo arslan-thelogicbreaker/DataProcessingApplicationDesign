@@ -57,25 +57,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileFolderSelectedForm.cs">
+    <Compile Include="FrmBrowse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FileFolderSelectedForm.Designer.cs">
-      <DependentUpon>FileFolderSelectedForm.cs</DependentUpon>
+    <Compile Include="FrmBrowse.Designer.cs">
+      <DependentUpon>FrmBrowse.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FileFolderSelectedForm.resx">
-      <DependentUpon>FileFolderSelectedForm.cs</DependentUpon>
+    <EmbeddedResource Include="FrmBrowse.resx">
+      <DependentUpon>FrmBrowse.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

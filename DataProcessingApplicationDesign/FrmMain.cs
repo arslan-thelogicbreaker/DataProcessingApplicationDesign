@@ -6,16 +6,16 @@ using System.Windows.Forms;
 
 namespace DataProcessingApplicationDesign
 {
-    public partial class MainForm : Form
+    public partial class FrmMain : Form
     {
-        FileFolderSelectedForm objectForm;
+        FrmBrowse objectForm;
         private System.Windows.Forms.Timer timer;
         private int progressValue;
         private bool isPaused;
  
-        public MainForm()
+        public FrmMain()
         {
-            objectForm = new FileFolderSelectedForm(this);
+            objectForm = new FrmBrowse(this);
 
             InitializeComponent();
             InitializeProgressBar();
@@ -27,11 +27,12 @@ namespace DataProcessingApplicationDesign
             dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold);
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
+            dataGridView.Columns[4].DefaultCellStyle.NullValue = null;
             dataGridView.Rows[0].Cells[3].Value = "Browse";
             dataGridView.Columns[4].DefaultCellStyle.NullValue = "Clear";
             dataGridView.Columns[5].DefaultCellStyle.NullValue = "Start";
-            dataGridView.Columns["columnClearCancelButton"].ReadOnly = false;
-            dataGridView.Columns["columnStartPauseContinueButton"].ReadOnly = false;
+            dataGridView.Columns["cmdClearCancel"].ReadOnly = false;
+            dataGridView.Columns["cmdStartPauseContinue"].ReadOnly = false;
 
             dataGridView.ReadOnly = false;
         }
@@ -103,7 +104,7 @@ namespace DataProcessingApplicationDesign
             }
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
-                dataGridView.Rows[i].Cells["columnSerialNumber"].Value = (i + 1).ToString();
+                dataGridView.Rows[i].Cells["colSrNo"].Value = (i + 1).ToString();
             }
         }
 
@@ -133,7 +134,7 @@ namespace DataProcessingApplicationDesign
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DataGridViewCell selectedCell = dataGridView.Rows[e.RowIndex].Cells["columnFile"];
+                DataGridViewCell selectedCell = dataGridView.Rows[e.RowIndex].Cells["colFileName"];
                 string cellValue = selectedCell.Value?.ToString();
                 textBoxSelectPath.Text = cellValue;
             }
@@ -151,79 +152,100 @@ namespace DataProcessingApplicationDesign
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if ((e.ColumnIndex == dataGridView.Columns["cmdBrowsRemove"].Index) && e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                string clickedCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                if (clickedCell != null)
-                {
-                    switch (clickedCell) {
-                        case "Browse":
-                            objectForm.ShowDialog();
-                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Remove";
-                            dataGridView.Refresh();
-                            break;
-                        case "Remove":
-                            dataGridView.Rows.RemoveAt(e.RowIndex);
-                            dataGridView.Refresh();
-                            break;
-                    }
-                }
-            }
+                DataGridViewCell clickedCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
-            if (e.ColumnIndex == dataGridView.Columns["columnClearCancelButton"].Index && e.RowIndex >= 0)
-            {
-                string clickedCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
-                if (clickedCell != null)
+                if (clickedCell.OwningColumn.Name == "cmdBrowsRemove")
                 {
-                    switch (clickedCell) {
-                        case "Clear":
-                            dataGridView.Rows.RemoveAt(e.RowIndex);
-                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Cancel";
-                            dataGridView.Refresh();
-                            break;
-                        case "Cancel":
-                            this.Close();
-                            break;
-                    }
-                }
-            }
-
-            if (e.ColumnIndex == dataGridView.Columns["columnStartPauseContinueButton"].Index && e.RowIndex >= 0)
-            {
-                string clickedCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
-                if (clickedCell != null)
-                {
-                    switch (clickedCell)
+                    if (clickedCell.Value.ToString().Contains("Browse"))
                     {
-                        case "Start":
-                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
+                        objectForm.ShowDialog();
+                        clickedCell.Value = "Remove";
+                        dataGridView.Refresh();
+                        clickedCell.ReadOnly = true;
+
+                    }
+                    else if (clickedCell.Value.ToString() == "Remove")
+                    {
+                        if (e.RowIndex > 0 && e.ColumnIndex > 0)
+                        {
+                            dataGridView.Rows.RemoveAt(e.RowIndex - 1);
+                        }
+                        else {
+                            MessageBox.Show("No Row/s found!");
+                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Browse";
+                            dataGridView.Refresh();
+                        } 
+                    }
+                }
+                else if (clickedCell.OwningColumn.Name == "cmdClearCancel")
+                {
+                    if (clickedCell.Value.ToString() == "Clear")
+                    {
+                            dataGridView.Rows.Clear();
+                            dataGridView.Rows[0].Cells[3].Value = "Browse";
+                            dataGridView.Columns[4].DefaultCellStyle.NullValue = "Cancel";
+                            dataGridView.Refresh();
+                    }
+                    else if (clickedCell.Value.ToString() == "Cancel")
+                    {
+                        this.Close();
+                    }
+                }
+                else if (clickedCell.OwningColumn.Name == "cmdStartPauseContinue")
+                {
+                    if (clickedCell.Value.ToString() == "Start")
+                    {
                             if (timer == null || !timer.Enabled)
                             {
                                 StartProgressBar();
-                                progressBar.Text = @"Started";
-                            }
-                            dataGridView.Refresh();
-                            break;
+                                progressBar.Text = "Started...";
+                                clickedCell.Value = "Pause";
 
-                        case "Pause":
-                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Continue";
+                            dataGridView.Refresh();
+                            }
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
+                    }
+                    else if (clickedCell.Value.ToString() == "Pause")
+                    {
+                        if (timer != null && timer.Enabled)
+                        {
                             PauseProgressBar();
-                            progressBar.Text = @"Paused";
-                            MessageBox.Show("Operation Paused");
-                            dataGridView.Refresh();
-                            break;
-                        case "Continue":
-                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
-                            ContinueProgressBar();
-                            progressBar.Text = @"Continued";
-                            MessageBox.Show("Operation Continued");
-                            dataGridView.Refresh();
-                            break;
+                            progressBar.Text = "Paused...";
+                        }
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Continue";
+                        dataGridView.Refresh();
+                    }
+                    else if (clickedCell.Value.ToString() == "Continue")
+                    {
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
+                        ContinueProgressBar();
+                        progressBar.Text = "Continued...";
+                        MessageBox.Show("Operation Continued");
                     }
                 }
+
+                dataGridView.Refresh();
             }
         }
 
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == colIcon.Index && e.Value == null)
+            {
+                
+                e.Value = null;
+                e.FormattingApplied = true;
+            }
+        }
+
+        private void dataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex == colIcon.Index)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

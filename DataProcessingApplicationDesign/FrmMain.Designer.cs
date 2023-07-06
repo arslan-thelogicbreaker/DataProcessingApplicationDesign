@@ -2,7 +2,7 @@
 
 namespace DataProcessingApplicationDesign
 {
-    partial class MainForm
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,16 @@ namespace DataProcessingApplicationDesign
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.columnSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnIcon = new System.Windows.Forms.DataGridViewImageColumn();
-            this.columnFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSrNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIcon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmdBrowsRemove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.columnClearCancelButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.columnStartPauseContinueButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.columnFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmdClearCancel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmdStartPauseContinue = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,69 +53,77 @@ namespace DataProcessingApplicationDesign
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnSerialNumber,
-            this.columnIcon,
-            this.columnFile,
+            this.colSrNo,
+            this.colIcon,
+            this.colFileName,
             this.cmdBrowsRemove,
-            this.columnClearCancelButton,
-            this.columnStartPauseContinueButton,
-            this.columnFileSize});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridView.Location = new System.Drawing.Point(12, 42);
+            this.cmdClearCancel,
+            this.cmdStartPauseContinue,
+            this.colFileSize});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView.Location = new System.Drawing.Point(21, 50);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView.Size = new System.Drawing.Size(841, 233);
+            this.dataGridView.Size = new System.Drawing.Size(841, 282);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_CellBeginEdit);
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
             // 
-            // columnSerialNumber
+            // colSrNo
             // 
-            this.columnSerialNumber.HeaderText = "Sr. No.";
-            this.columnSerialNumber.Name = "columnSerialNumber";
-            this.columnSerialNumber.Width = 70;
+            this.colSrNo.HeaderText = "Sr. No.";
+            this.colSrNo.Name = "colSrNo";
+            this.colSrNo.ReadOnly = true;
+            this.colSrNo.Width = 70;
             // 
-            // columnIcon
+            // colIcon
             // 
-            this.columnIcon.HeaderText = "";
-            this.columnIcon.Name = "columnIcon";
-            this.columnIcon.Width = 80;
+            this.colIcon.HeaderText = "";
+            this.colIcon.Name = "colIcon";
+            this.colIcon.ReadOnly = true;
+            this.colIcon.Width = 80;
             // 
-            // columnFile
+            // colFileName
             // 
-            this.columnFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnFile.HeaderText = "File";
-            this.columnFile.Name = "columnFile";
+            this.colFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colFileName.HeaderText = "File";
+            this.colFileName.Name = "colFileName";
+            this.colFileName.ReadOnly = true;
             // 
             // cmdBrowsRemove
             // 
             this.cmdBrowsRemove.HeaderText = "";
             this.cmdBrowsRemove.Name = "cmdBrowsRemove";
+            this.cmdBrowsRemove.ReadOnly = true;
             this.cmdBrowsRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.cmdBrowsRemove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.cmdBrowsRemove.Text = "Browse";
@@ -123,34 +131,36 @@ namespace DataProcessingApplicationDesign
             this.cmdBrowsRemove.UseColumnTextForButtonValue = true;
             this.cmdBrowsRemove.Width = 80;
             // 
-            // columnClearCancelButton
+            // cmdClearCancel
             // 
-            this.columnClearCancelButton.HeaderText = "";
-            this.columnClearCancelButton.Name = "columnClearCancelButton";
-            this.columnClearCancelButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnClearCancelButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnClearCancelButton.Text = "Clear";
-            this.columnClearCancelButton.ToolTipText = "Clear/Cancel";
-            this.columnClearCancelButton.UseColumnTextForButtonValue = true;
-            this.columnClearCancelButton.Width = 80;
+            this.cmdClearCancel.HeaderText = "";
+            this.cmdClearCancel.Name = "cmdClearCancel";
+            this.cmdClearCancel.ReadOnly = true;
+            this.cmdClearCancel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmdClearCancel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cmdClearCancel.Text = "Clear";
+            this.cmdClearCancel.ToolTipText = "Clear/Cancel";
+            this.cmdClearCancel.UseColumnTextForButtonValue = true;
+            this.cmdClearCancel.Width = 80;
             // 
-            // columnStartPauseContinueButton
+            // cmdStartPauseContinue
             // 
-            this.columnStartPauseContinueButton.HeaderText = "";
-            this.columnStartPauseContinueButton.Name = "columnStartPauseContinueButton";
-            this.columnStartPauseContinueButton.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.columnStartPauseContinueButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnStartPauseContinueButton.Text = "Start";
-            this.columnStartPauseContinueButton.ToolTipText = "Start/Pause/Continue";
-            this.columnStartPauseContinueButton.UseColumnTextForButtonValue = true;
-            this.columnStartPauseContinueButton.Width = 80;
+            this.cmdStartPauseContinue.HeaderText = "";
+            this.cmdStartPauseContinue.Name = "cmdStartPauseContinue";
+            this.cmdStartPauseContinue.ReadOnly = true;
+            this.cmdStartPauseContinue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmdStartPauseContinue.Text = "Start";
+            this.cmdStartPauseContinue.ToolTipText = "Start/Pause/Continue";
+            this.cmdStartPauseContinue.UseColumnTextForButtonValue = true;
+            this.cmdStartPauseContinue.Width = 80;
             // 
-            // columnFileSize
+            // colFileSize
             // 
-            this.columnFileSize.HeaderText = "Size";
-            this.columnFileSize.Name = "columnFileSize";
-            this.columnFileSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnFileSize.Width = 80;
+            this.colFileSize.HeaderText = "Size";
+            this.colFileSize.Name = "colFileSize";
+            this.colFileSize.ReadOnly = true;
+            this.colFileSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFileSize.Width = 80;
             // 
             // label1
             // 
@@ -218,7 +228,7 @@ namespace DataProcessingApplicationDesign
             this.progressBar.InnerColor = System.Drawing.Color.Transparent;
             this.progressBar.InnerMargin = 2;
             this.progressBar.InnerWidth = -1;
-            this.progressBar.Location = new System.Drawing.Point(680, 288);
+            this.progressBar.Location = new System.Drawing.Point(718, 338);
             this.progressBar.MarqueeAnimationSpeed = 2000;
             this.progressBar.Name = "progressBar";
             this.progressBar.OuterColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -227,7 +237,7 @@ namespace DataProcessingApplicationDesign
             this.progressBar.ProgressColor = System.Drawing.Color.Blue;
             this.progressBar.ProgressWidth = 15;
             this.progressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBar.Size = new System.Drawing.Size(173, 164);
+            this.progressBar.Size = new System.Drawing.Size(135, 114);
             this.progressBar.StartAngle = 270;
             this.progressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.progressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
@@ -239,7 +249,7 @@ namespace DataProcessingApplicationDesign
             this.progressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressBar.Value = 68;
             // 
-            // MainForm
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,7 +265,7 @@ namespace DataProcessingApplicationDesign
             this.Controls.Add(this.dataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.Name = "MainForm";
+            this.Name = "FrmMain";
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -277,14 +287,14 @@ namespace DataProcessingApplicationDesign
         public System.Windows.Forms.DataGridView dataGridView;
         public System.Windows.Forms.SaveFileDialog saveFileDialog1;
         public System.Windows.Forms.TextBox textBoxSelectPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSerialNumber;
-        private System.Windows.Forms.DataGridViewImageColumn columnIcon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnFile;
-        private System.Windows.Forms.DataGridViewButtonColumn cmdBrowsRemove;
-        private System.Windows.Forms.DataGridViewButtonColumn columnClearCancelButton;
-        private System.Windows.Forms.DataGridViewButtonColumn columnStartPauseContinueButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnFileSize;
         public CircularProgressBar.CircularProgressBar progressBar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSrNo;
+        private System.Windows.Forms.DataGridViewImageColumn colIcon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFileName;
+        private System.Windows.Forms.DataGridViewButtonColumn cmdBrowsRemove;
+        private System.Windows.Forms.DataGridViewButtonColumn cmdClearCancel;
+        private System.Windows.Forms.DataGridViewButtonColumn cmdStartPauseContinue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
     }
 }
 

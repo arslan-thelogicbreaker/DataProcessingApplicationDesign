@@ -5,13 +5,13 @@ using System.IO;
 
 namespace DataProcessingApplicationDesign
 {
-    public partial class FileFolderSelectedForm : Form
+    public partial class FrmBrowse : Form
     {
         public DataGridView dataGridView;
         public TextBox textBoxSelectPath;
-        MainForm objectMainForm;
+        FrmMain objectMainForm;
 
-        public FileFolderSelectedForm(MainForm objectSecondForm)
+        public FrmBrowse(FrmMain objectSecondForm)
         {
             this.objectMainForm = objectSecondForm;
             InitializeComponent();
@@ -38,7 +38,9 @@ namespace DataProcessingApplicationDesign
                     FileInfo fileInfo = new FileInfo(selectedFile);
                     long fileSize = fileInfo.Length;
                     DataGridViewImageColumn iconColumn = (DataGridViewImageColumn)objectMainForm.dataGridView.Columns[1];
+                    
                     objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, null, null, null, fileSize);
+                    objectMainForm.dataGridView.Rows[0].Visible = true;
                     objectMainForm.textBoxSelectPath.Text = fileName;
                 }
                 this.Close();

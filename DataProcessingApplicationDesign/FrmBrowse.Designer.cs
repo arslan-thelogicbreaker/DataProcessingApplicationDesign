@@ -1,6 +1,6 @@
 ﻿namespace DataProcessingApplicationDesign
 {
-    partial class FileFolderSelectedForm
+    partial class FrmBrowse
     {
         /// <summary>
         /// Required designer variable.
