@@ -10,6 +10,8 @@ namespace DataProcessingApplicationDesign
         public DataGridView dataGridView;
         public TextBox textBoxSelectPath;
         FrmMain objectMainForm;
+        private int row_count = 1;
+        private bool[] isRowPaused;
 
         public FrmBrowse(FrmMain objectSecondForm)
         {
@@ -17,12 +19,12 @@ namespace DataProcessingApplicationDesign
             InitializeComponent();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void buttonFileBrowse_Click(object sender, EventArgs e)
+        private void btnFileBrowse_Click(object sender, EventArgs e)
         {
             using (var openFileDialog = new OpenFileDialog())
             {
@@ -38,7 +40,7 @@ namespace DataProcessingApplicationDesign
                     FileInfo fileInfo = new FileInfo(selectedFile);
                     long fileSize = fileInfo.Length;
                     DataGridViewImageColumn iconColumn = (DataGridViewImageColumn)objectMainForm.dataGridView.Columns[1];
-                    
+
                     objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, null, null, null, fileSize);
                     objectMainForm.dataGridView.Rows[0].Visible = true;
                     objectMainForm.textBoxSelectPath.Text = fileName;
@@ -46,9 +48,7 @@ namespace DataProcessingApplicationDesign
                 this.Close();
             }
         }
-
-
-        private void buttonFolderBrowse_Click(object sender, EventArgs e)
+        private void btnFolderBrowse_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderbrowserdialog = new FolderBrowserDialog();
 
@@ -68,6 +68,5 @@ namespace DataProcessingApplicationDesign
             }
             this.Close();
         }
-
     }
 }

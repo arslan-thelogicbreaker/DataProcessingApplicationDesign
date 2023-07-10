@@ -28,54 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonFileBrowse = new System.Windows.Forms.Button();
-            this.buttonFolderBrowse = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.btnFileBrowse = new System.Windows.Forms.Button();
+            this.btnFolderBrowse = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // buttonFileBrowse
+            // btnFileBrowse
             // 
-            this.buttonFileBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFileBrowse.Location = new System.Drawing.Point(12, 27);
-            this.buttonFileBrowse.Name = "buttonFileBrowse";
-            this.buttonFileBrowse.Size = new System.Drawing.Size(238, 32);
-            this.buttonFileBrowse.TabIndex = 0;
-            this.buttonFileBrowse.Text = "File";
-            this.buttonFileBrowse.UseVisualStyleBackColor = true;
-            this.buttonFileBrowse.Click += new System.EventHandler(this.buttonFileBrowse_Click);
+            this.btnFileBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFileBrowse.Location = new System.Drawing.Point(12, 27);
+            this.btnFileBrowse.Name = "btnFileBrowse";
+            this.btnFileBrowse.Size = new System.Drawing.Size(238, 32);
+            this.btnFileBrowse.TabIndex = 0;
+            this.btnFileBrowse.Text = "File";
+            this.btnFileBrowse.UseVisualStyleBackColor = true;
+            this.btnFileBrowse.Click += new System.EventHandler(this.btnFileBrowse_Click);
             // 
-            // buttonFolderBrowse
+            // btnFolderBrowse
             // 
-            this.buttonFolderBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFolderBrowse.Location = new System.Drawing.Point(12, 65);
-            this.buttonFolderBrowse.Name = "buttonFolderBrowse";
-            this.buttonFolderBrowse.Size = new System.Drawing.Size(238, 30);
-            this.buttonFolderBrowse.TabIndex = 1;
-            this.buttonFolderBrowse.Text = "Folder";
-            this.buttonFolderBrowse.UseVisualStyleBackColor = true;
-            this.buttonFolderBrowse.Click += new System.EventHandler(this.buttonFolderBrowse_Click);
+            this.btnFolderBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFolderBrowse.Location = new System.Drawing.Point(12, 65);
+            this.btnFolderBrowse.Name = "btnFolderBrowse";
+            this.btnFolderBrowse.Size = new System.Drawing.Size(238, 30);
+            this.btnFolderBrowse.TabIndex = 1;
+            this.btnFolderBrowse.Text = "Folder";
+            this.btnFolderBrowse.UseVisualStyleBackColor = true;
+            this.btnFolderBrowse.Click += new System.EventHandler(this.btnFolderBrowse_Click);
             // 
-            // buttonCancel
+            // btnCancel
             // 
-            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(92, 116);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 2;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(92, 116);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // FileFolderSelectedForm
+            // FrmBrowse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(262, 151);
             this.ControlBox = false;
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonFolderBrowse);
-            this.Controls.Add(this.buttonFileBrowse);
-            this.Name = "FileFolderSelectedForm";
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnFolderBrowse);
+            this.Controls.Add(this.btnFileBrowse);
+            this.Name = "FrmBrowse";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select File or Folder";
@@ -85,8 +85,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonFileBrowse;
-        private System.Windows.Forms.Button buttonFolderBrowse;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button btnFileBrowse;
+        private System.Windows.Forms.Button btnFolderBrowse;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
