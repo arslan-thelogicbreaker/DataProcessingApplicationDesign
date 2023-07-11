@@ -154,21 +154,11 @@ namespace DataProcessingApplicationDesign
                     if (clickedCell.Value.ToString().Contains("Browse"))
                     {
                         objectForm.ShowDialog();
-                        clickedCell.Value = "Remove";
                         dataGridView.Refresh();
                     }
                     else if (clickedCell.Value.ToString() == "Remove")
                     {
-                        if (e.RowIndex > 0 && e.ColumnIndex > 0)
-                        {
-                            dataGridView.Rows.RemoveAt(e.RowIndex - 1);
-                        }
-                        else {
-                            MessageBox.Show("No Row/s found!");
-                            clickedCell.Value = "Browse";
-                            dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Browse";
-                            dataGridView.Refresh();
-                        } 
+                            dataGridView.Rows.RemoveAt(e.RowIndex);
                     }
                 }
                 else if (clickedCell.OwningColumn.Name == "cmdClearCancel")

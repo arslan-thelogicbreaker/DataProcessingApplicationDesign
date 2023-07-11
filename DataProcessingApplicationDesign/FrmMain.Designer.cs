@@ -33,13 +33,6 @@ namespace DataProcessingApplicationDesign
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.colSrNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIcon = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdBrowsRemove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cmdClearCancel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cmdStartPauseContinue = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,6 +41,13 @@ namespace DataProcessingApplicationDesign
             this.buttonSelectPath = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.progressBar = new CircularProgressBar.CircularProgressBar();
+            this.colSrNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIcon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmdBrowsRemove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmdClearCancel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmdStartPauseContinue = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,70 +96,6 @@ namespace DataProcessingApplicationDesign
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView_DefaultValuesNeeded);
             this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
-            // 
-            // colSrNo
-            // 
-            this.colSrNo.HeaderText = "Sr. No.";
-            this.colSrNo.Name = "colSrNo";
-            this.colSrNo.ReadOnly = true;
-            this.colSrNo.Width = 70;
-            // 
-            // colIcon
-            // 
-            this.colIcon.HeaderText = "";
-            this.colIcon.Name = "colIcon";
-            this.colIcon.ReadOnly = true;
-            this.colIcon.Width = 80;
-            // 
-            // colFileName
-            // 
-            this.colFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colFileName.HeaderText = "File";
-            this.colFileName.Name = "colFileName";
-            this.colFileName.ReadOnly = true;
-            // 
-            // cmdBrowsRemove
-            // 
-            this.cmdBrowsRemove.HeaderText = "";
-            this.cmdBrowsRemove.Name = "cmdBrowsRemove";
-            this.cmdBrowsRemove.ReadOnly = true;
-            this.cmdBrowsRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdBrowsRemove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cmdBrowsRemove.Text = "Browse";
-            this.cmdBrowsRemove.ToolTipText = "Browse/Remove";
-            this.cmdBrowsRemove.UseColumnTextForButtonValue = true;
-            this.cmdBrowsRemove.Width = 80;
-            // 
-            // cmdClearCancel
-            // 
-            this.cmdClearCancel.HeaderText = "";
-            this.cmdClearCancel.Name = "cmdClearCancel";
-            this.cmdClearCancel.ReadOnly = true;
-            this.cmdClearCancel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdClearCancel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cmdClearCancel.Text = "Clear";
-            this.cmdClearCancel.ToolTipText = "Clear/Cancel";
-            this.cmdClearCancel.UseColumnTextForButtonValue = true;
-            this.cmdClearCancel.Width = 80;
-            // 
-            // cmdStartPauseContinue
-            // 
-            this.cmdStartPauseContinue.HeaderText = "";
-            this.cmdStartPauseContinue.Name = "cmdStartPauseContinue";
-            this.cmdStartPauseContinue.ReadOnly = true;
-            this.cmdStartPauseContinue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdStartPauseContinue.Text = "Start";
-            this.cmdStartPauseContinue.ToolTipText = "Start/Pause/Continue";
-            this.cmdStartPauseContinue.UseColumnTextForButtonValue = true;
-            this.cmdStartPauseContinue.Width = 80;
-            // 
-            // colFileSize
-            // 
-            this.colFileSize.HeaderText = "Size";
-            this.colFileSize.Name = "colFileSize";
-            this.colFileSize.ReadOnly = true;
-            this.colFileSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colFileSize.Width = 80;
             // 
             // label1
             // 
@@ -247,6 +183,72 @@ namespace DataProcessingApplicationDesign
             this.progressBar.TabIndex = 7;
             this.progressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressBar.Value = 68;
+            // 
+            // colSrNo
+            // 
+            this.colSrNo.HeaderText = "Sr. No.";
+            this.colSrNo.Name = "colSrNo";
+            this.colSrNo.ReadOnly = true;
+            this.colSrNo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colSrNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colSrNo.Width = 70;
+            // 
+            // colIcon
+            // 
+            this.colIcon.HeaderText = "";
+            this.colIcon.Name = "colIcon";
+            this.colIcon.ReadOnly = true;
+            this.colIcon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colIcon.Width = 80;
+            // 
+            // colFileName
+            // 
+            this.colFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colFileName.HeaderText = "File";
+            this.colFileName.Name = "colFileName";
+            this.colFileName.ReadOnly = true;
+            this.colFileName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colFileName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cmdBrowsRemove
+            // 
+            this.cmdBrowsRemove.HeaderText = "";
+            this.cmdBrowsRemove.Name = "cmdBrowsRemove";
+            this.cmdBrowsRemove.ReadOnly = true;
+            this.cmdBrowsRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmdBrowsRemove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cmdBrowsRemove.Text = "Browse";
+            this.cmdBrowsRemove.ToolTipText = "Browse/Remove";
+            this.cmdBrowsRemove.Width = 80;
+            // 
+            // cmdClearCancel
+            // 
+            this.cmdClearCancel.HeaderText = "";
+            this.cmdClearCancel.Name = "cmdClearCancel";
+            this.cmdClearCancel.ReadOnly = true;
+            this.cmdClearCancel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmdClearCancel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cmdClearCancel.Text = "Clear";
+            this.cmdClearCancel.ToolTipText = "Clear/Cancel";
+            this.cmdClearCancel.Width = 80;
+            // 
+            // cmdStartPauseContinue
+            // 
+            this.cmdStartPauseContinue.HeaderText = "";
+            this.cmdStartPauseContinue.Name = "cmdStartPauseContinue";
+            this.cmdStartPauseContinue.ReadOnly = true;
+            this.cmdStartPauseContinue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmdStartPauseContinue.Text = "Start";
+            this.cmdStartPauseContinue.ToolTipText = "Start/Pause/Continue";
+            this.cmdStartPauseContinue.Width = 80;
+            // 
+            // colFileSize
+            // 
+            this.colFileSize.HeaderText = "Size";
+            this.colFileSize.Name = "colFileSize";
+            this.colFileSize.ReadOnly = true;
+            this.colFileSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFileSize.Width = 80;
             // 
             // FrmMain
             // 

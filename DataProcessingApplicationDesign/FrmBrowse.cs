@@ -41,7 +41,8 @@ namespace DataProcessingApplicationDesign
                     long fileSize = fileInfo.Length;
                     DataGridViewImageColumn iconColumn = (DataGridViewImageColumn)objectMainForm.dataGridView.Columns[1];
 
-                    objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, null, null, null, fileSize);
+                    objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, "Remove", "Clear", "Start", fileSize);
+                    //objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, null, null, null, fileSize);
                     objectMainForm.dataGridView.Rows[0].Visible = true;
                     objectMainForm.textBoxSelectPath.Text = fileName;
                 }
@@ -63,7 +64,8 @@ namespace DataProcessingApplicationDesign
                 {
                     foldersize += fileinfo.Length;
                 }
-                objectMainForm.dataGridView.Rows.Add(null, foldericon.ToBitmap(), folderpath, null, null, null, foldersize);
+                objectMainForm.dataGridView.Rows.Add(null, foldericon.ToBitmap(), folderpath, "Remove", "Clear", "Start", foldersize);
+                //objectMainForm.dataGridView.Rows.Add(null, foldericon.ToBitmap(), folderpath, null, null, null, foldersize);
                 objectMainForm.textBoxSelectPath.Text = folderpath;
             }
             this.Close();
