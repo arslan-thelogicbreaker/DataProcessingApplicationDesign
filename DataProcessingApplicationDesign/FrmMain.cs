@@ -161,15 +161,13 @@ namespace DataProcessingApplicationDesign
                 {
                     if (clickedCell.Value.ToString() == "Clear")
                     {
-                        if (e.RowIndex >= 0 && e.ColumnIndex >= 0) {
+                        if (e.RowIndex > 0) {
                             dataGridView.Rows.Clear();
                             dataGridView.Rows[0].Cells[3].Value = "Browse";
                             dataGridView.Rows[0].Cells[4].Value = "Cancel";
                             dataGridView.Rows[0].Cells[5].Value = "Start";
                             dataGridView.Refresh();
-
                             MessageBox.Show("Cleared!");
-
                         }
                         else
                         {
@@ -179,30 +177,43 @@ namespace DataProcessingApplicationDesign
                     
                     else if (clickedCell.Value.ToString() == "Cancel")
                     {
-                        StopProgressBar();
-                        progressBar.Text = "Stoped All";
-                        clickedCell.Value = "Clear";
+                        if (timer != null || timer.Enabled)
+                        {
+                            StopProgressBar();
+                            progressBar.Value = 0;
+                            dataGridView.Rows[e.RowIndex].Cells[5].Value = "Start";
+                            progressBar.Text = "Stoped";
+                            dataGridView.Refresh();
+                        }
+                        else {
+                            MessageBox.Show("No progress is curently running!");
+                        }
+                        
                     }
                 }
                 else if (clickedCell.OwningColumn.Name == "cmdStartPauseContinue")
                 {
-                    if (clickedCell.Value.ToString() == "Start")
-                    {
-                        if (dataGridView.Rows[e.RowIndex].Cells["colFileName"] != null) {
-                            if (timer == null || !timer.Enabled)
-                            {
-                                StartProgressBar();
-                                progressBar.Text = "Started...";
-                                clickedCell.Value = "Pause";
-                                dataGridView.Refresh();
-                            }
-                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
-                        }
-                        else
+                        if (clickedCell.Value.ToString() == "Start")
                         {
-                           MessageBox.Show("No Data to Process!");
-                        } 
-                    }
+                                DataGridViewRow row = dataGridView.Rows[e.RowIndex];
+                                DataGridViewCell textCell = row.Cells["colFileName"];
+
+                                if (textCell.Value != null && !string.IsNullOrEmpty(textCell.Value.ToString()))
+                                {
+                                    if (timer == null || !timer.Enabled)
+                                    {
+                                        StartProgressBar();
+                                        progressBar.Text = "Started...";
+                                        clickedCell.Value = "Pause";
+                                        dataGridView.Refresh();
+                                    }
+                                    dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
+                                }
+                            else
+                            {
+                                MessageBox.Show("No Data to Process!");
+                            }
+                        }
                     else if (clickedCell.Value.ToString() == "Pause")
                     {
                         if (timer != null && timer.Enabled)
