@@ -30,17 +30,9 @@ namespace DataProcessingApplicationDesign
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxOriginalPath = new System.Windows.Forms.CheckBox();
-            this.textBoxSelectPath = new System.Windows.Forms.TextBox();
-            this.buttonSelectPath = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.progressBar = new CircularProgressBar.CircularProgressBar();
             this.colSrNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIcon = new System.Windows.Forms.DataGridViewImageColumn();
             this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +40,14 @@ namespace DataProcessingApplicationDesign
             this.cmdClearCancel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cmdStartPauseContinue = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.progressBar = new CircularProgressBar.CircularProgressBar();
+            this.buttonSelectPath = new System.Windows.Forms.Button();
+            this.checkBoxOriginalPath = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxSelectPath = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,13 +60,13 @@ namespace DataProcessingApplicationDesign
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSrNo,
@@ -76,14 +76,14 @@ namespace DataProcessingApplicationDesign
             this.cmdClearCancel,
             this.cmdStartPauseContinue,
             this.colFileSize});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView.Location = new System.Drawing.Point(21, 50);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
@@ -96,93 +96,6 @@ namespace DataProcessingApplicationDesign
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView_DefaultValuesNeeded);
             this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(277, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Data Processing Application Design";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 390);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Save Path:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(129, 432);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Save on Original Path";
-            // 
-            // checkBoxOriginalPath
-            // 
-            this.checkBoxOriginalPath.AutoSize = true;
-            this.checkBoxOriginalPath.Location = new System.Drawing.Point(108, 431);
-            this.checkBoxOriginalPath.Name = "checkBoxOriginalPath";
-            this.checkBoxOriginalPath.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxOriginalPath.TabIndex = 4;
-            this.checkBoxOriginalPath.UseVisualStyleBackColor = true;
-            this.checkBoxOriginalPath.CheckedChanged += new System.EventHandler(this.checkBoxOriginalPath_CheckedChanged);
-            // 
-            // textBoxSelectPath
-            // 
-            this.textBoxSelectPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSelectPath.Location = new System.Drawing.Point(108, 388);
-            this.textBoxSelectPath.Name = "textBoxSelectPath";
-            this.textBoxSelectPath.Size = new System.Drawing.Size(366, 20);
-            this.textBoxSelectPath.TabIndex = 5;
-            // 
-            // buttonSelectPath
-            // 
-            this.buttonSelectPath.Location = new System.Drawing.Point(480, 388);
-            this.buttonSelectPath.Name = "buttonSelectPath";
-            this.buttonSelectPath.Size = new System.Drawing.Size(75, 20);
-            this.buttonSelectPath.TabIndex = 6;
-            this.buttonSelectPath.Text = "Select";
-            this.buttonSelectPath.UseVisualStyleBackColor = true;
-            this.buttonSelectPath.Click += new System.EventHandler(this.buttonSelectPath_Click);
-            // 
-            // progressBar
-            // 
-            this.progressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.progressBar.AnimationSpeed = 300;
-            this.progressBar.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.progressBar.InnerColor = System.Drawing.Color.Transparent;
-            this.progressBar.InnerMargin = 2;
-            this.progressBar.InnerWidth = -1;
-            this.progressBar.Location = new System.Drawing.Point(718, 338);
-            this.progressBar.MarqueeAnimationSpeed = 2000;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.OuterColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.progressBar.OuterMargin = -25;
-            this.progressBar.OuterWidth = 25;
-            this.progressBar.ProgressColor = System.Drawing.Color.Blue;
-            this.progressBar.ProgressWidth = 15;
-            this.progressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBar.Size = new System.Drawing.Size(135, 114);
-            this.progressBar.StartAngle = 270;
-            this.progressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.progressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.progressBar.SubscriptText = "";
-            this.progressBar.SuperscriptColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.progressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.progressBar.SuperscriptText = "";
-            this.progressBar.TabIndex = 7;
-            this.progressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.progressBar.Value = 68;
             // 
             // colSrNo
             // 
@@ -227,7 +140,6 @@ namespace DataProcessingApplicationDesign
             this.cmdClearCancel.Name = "cmdClearCancel";
             this.cmdClearCancel.ReadOnly = true;
             this.cmdClearCancel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdClearCancel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.cmdClearCancel.Text = "Clear";
             this.cmdClearCancel.ToolTipText = "Clear/Cancel";
             this.cmdClearCancel.Width = 80;
@@ -249,6 +161,92 @@ namespace DataProcessingApplicationDesign
             this.colFileSize.ReadOnly = true;
             this.colFileSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colFileSize.Width = 80;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(277, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(296, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Data Processing Application Design";
+            // 
+            // progressBar
+            // 
+            this.progressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.progressBar.AnimationSpeed = 300;
+            this.progressBar.BackColor = System.Drawing.Color.Transparent;
+            this.progressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.progressBar.InnerColor = System.Drawing.Color.Transparent;
+            this.progressBar.InnerMargin = 2;
+            this.progressBar.InnerWidth = -1;
+            this.progressBar.Location = new System.Drawing.Point(718, 338);
+            this.progressBar.MarqueeAnimationSpeed = 2000;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.OuterColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.progressBar.OuterMargin = -25;
+            this.progressBar.OuterWidth = 25;
+            this.progressBar.ProgressColor = System.Drawing.Color.Blue;
+            this.progressBar.ProgressWidth = 15;
+            this.progressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBar.Size = new System.Drawing.Size(135, 114);
+            this.progressBar.StartAngle = 270;
+            this.progressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.progressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.progressBar.SubscriptText = "";
+            this.progressBar.SuperscriptColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.progressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.progressBar.SuperscriptText = "";
+            this.progressBar.TabIndex = 7;
+            this.progressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.progressBar.Value = 68;
+            // 
+            // buttonSelectPath
+            // 
+            this.buttonSelectPath.Location = new System.Drawing.Point(480, 388);
+            this.buttonSelectPath.Name = "buttonSelectPath";
+            this.buttonSelectPath.Size = new System.Drawing.Size(75, 20);
+            this.buttonSelectPath.TabIndex = 6;
+            this.buttonSelectPath.Text = "Select";
+            this.buttonSelectPath.UseVisualStyleBackColor = true;
+            this.buttonSelectPath.Click += new System.EventHandler(this.buttonSelectPath_Click);
+            // 
+            // checkBoxOriginalPath
+            // 
+            this.checkBoxOriginalPath.AutoSize = true;
+            this.checkBoxOriginalPath.Location = new System.Drawing.Point(108, 431);
+            this.checkBoxOriginalPath.Name = "checkBoxOriginalPath";
+            this.checkBoxOriginalPath.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxOriginalPath.TabIndex = 4;
+            this.checkBoxOriginalPath.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(129, 432);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Save on Original Path";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 390);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Save Path:";
+            // 
+            // textBoxSelectPath
+            // 
+            this.textBoxSelectPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSelectPath.Location = new System.Drawing.Point(108, 388);
+            this.textBoxSelectPath.Name = "textBoxSelectPath";
+            this.textBoxSelectPath.Size = new System.Drawing.Size(366, 20);
+            this.textBoxSelectPath.TabIndex = 5;
             // 
             // FrmMain
             // 
@@ -281,13 +279,8 @@ namespace DataProcessingApplicationDesign
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.CheckBox checkBoxOriginalPath;
-        public System.Windows.Forms.Button buttonSelectPath;
         public System.Windows.Forms.DataGridView dataGridView;
         public System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        public System.Windows.Forms.TextBox textBoxSelectPath;
         public CircularProgressBar.CircularProgressBar progressBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSrNo;
         private System.Windows.Forms.DataGridViewImageColumn colIcon;
@@ -296,6 +289,11 @@ namespace DataProcessingApplicationDesign
         private System.Windows.Forms.DataGridViewButtonColumn cmdClearCancel;
         private System.Windows.Forms.DataGridViewButtonColumn cmdStartPauseContinue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
+        public System.Windows.Forms.Button buttonSelectPath;
+        public System.Windows.Forms.CheckBox checkBoxOriginalPath;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox textBoxSelectPath;
     }
 }
 

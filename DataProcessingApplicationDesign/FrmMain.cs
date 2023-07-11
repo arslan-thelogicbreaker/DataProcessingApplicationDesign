@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -8,6 +6,7 @@ namespace DataProcessingApplicationDesign
 {
     public partial class FrmMain : Form
     {
+
         FrmBrowse objectForm;
         private System.Windows.Forms.Timer timer;
         private int progressValue;
@@ -119,6 +118,7 @@ namespace DataProcessingApplicationDesign
                 string destinationPath = saveFileDialog.FileName;
                 File.Copy(filePath, destinationPath);
                 textBoxSelectPath.Text = destinationPath;
+
                 MessageBox.Show("File saved to the new location.");
             }
         }
@@ -132,9 +132,6 @@ namespace DataProcessingApplicationDesign
                 textBoxSelectPath.Text = cellValue;
             }
         }
-
-       
-
         private void checkBoxOriginalPath_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOriginalPath.Checked)
@@ -142,7 +139,6 @@ namespace DataProcessingApplicationDesign
                 textBoxSelectPath.Text = "Default Path";
             }
         }
-
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -165,15 +161,26 @@ namespace DataProcessingApplicationDesign
                 {
                     if (clickedCell.Value.ToString() == "Clear")
                     {
-                        MessageBox.Show("Cleared");
-                        dataGridView.Rows[0].Cells[3].Value = "Browse";
-                        dataGridView.Rows[0].Cells[4].Value = "Cancel";
-                        dataGridView.Rows[0].Cells[5].Value = "Start";
-                        dataGridView.Refresh();
+                        if (e.RowIndex >= 0 && e.ColumnIndex >= 0) {
+                            dataGridView.Rows.Clear();
+                            dataGridView.Rows[0].Cells[3].Value = "Browse";
+                            dataGridView.Rows[0].Cells[4].Value = "Cancel";
+                            dataGridView.Rows[0].Cells[5].Value = "Start";
+                            dataGridView.Refresh();
+
+                            MessageBox.Show("Cleared!");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Data is Already Cleared!");
+                        }
                     }
+                    
                     else if (clickedCell.Value.ToString() == "Cancel")
                     {
                         StopProgressBar();
+                        progressBar.Text = "Stoped All";
                         clickedCell.Value = "Clear";
                     }
                 }
@@ -181,15 +188,20 @@ namespace DataProcessingApplicationDesign
                 {
                     if (clickedCell.Value.ToString() == "Start")
                     {
+                        if (dataGridView.Rows[e.RowIndex].Cells["colFileName"] != null) {
                             if (timer == null || !timer.Enabled)
                             {
                                 StartProgressBar();
                                 progressBar.Text = "Started...";
                                 clickedCell.Value = "Pause";
-
-                            dataGridView.Refresh();
+                                dataGridView.Refresh();
                             }
                         dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
+                        }
+                        else
+                        {
+                           MessageBox.Show("No Data to Process!");
+                        } 
                     }
                     else if (clickedCell.Value.ToString() == "Pause")
                     {
@@ -219,5 +231,7 @@ namespace DataProcessingApplicationDesign
             e.Row.Cells["cmdClearCancel"].Value = "Clear";
             e.Row.Cells["cmdStartPauseContinue"].Value = "Start";
         }
+
+       
     }
 }
