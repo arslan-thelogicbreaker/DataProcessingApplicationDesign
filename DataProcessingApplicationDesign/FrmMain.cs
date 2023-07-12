@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageBoxDLL;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -6,7 +7,6 @@ namespace DataProcessingApplicationDesign
 {
     public partial class FrmMain : Form
     {
-
         FrmBrowse objectForm;
         private System.Windows.Forms.Timer timer;
         private int progressValue;
@@ -118,8 +118,7 @@ namespace DataProcessingApplicationDesign
                 string destinationPath = saveFileDialog.FileName;
                 File.Copy(filePath, destinationPath);
                 textBoxSelectPath.Text = destinationPath;
-
-                MessageBox.Show("File saved to the new location.");
+                MessageBoxHelper.ShowMessage("File saved to the new location!", "Information");
             }
         }
 
@@ -167,7 +166,7 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Rows[0].Cells[4].Value = "Cancel";
                             dataGridView.Rows[0].Cells[5].Value = "Start";
                             dataGridView.Refresh();
-                            MessageBox.Show("Cleared!");
+                            MessageBoxHelper.ShowMessage("Data Cleared!", "Information"); 
                         }
                         else
                         {
@@ -186,7 +185,8 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Refresh();
                         }
                         else {
-                            MessageBox.Show("No progress is curently running!");
+                            MessageBoxHelper.ShowMessage("Progress is not Running!", "Information");
+                            
                         }
                         
                     }
@@ -211,7 +211,7 @@ namespace DataProcessingApplicationDesign
                                 }
                             else
                             {
-                                MessageBox.Show("No Data to Process!");
+                                MessageBoxHelper.ShowMessage("No Data to Process!", "Information");
                             }
                         }
                     else if (clickedCell.Value.ToString() == "Pause")
@@ -243,6 +243,10 @@ namespace DataProcessingApplicationDesign
             e.Row.Cells["cmdStartPauseContinue"].Value = "Start";
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
     }
 }
