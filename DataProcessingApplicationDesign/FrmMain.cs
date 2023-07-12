@@ -7,6 +7,7 @@ namespace DataProcessingApplicationDesign
 {
     public partial class FrmMain : Form
     {
+
         FrmBrowse objectForm;
         private System.Windows.Forms.Timer timer;
         private int progressValue;
@@ -245,8 +246,7 @@ namespace DataProcessingApplicationDesign
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            MessageBoxDLL.ShowMessage("MessageBoxDLL.ShowMessage", "Information");
+            
         }
     }
 }
