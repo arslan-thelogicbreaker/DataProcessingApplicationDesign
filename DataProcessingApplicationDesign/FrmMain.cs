@@ -1,4 +1,4 @@
-﻿using MessageBoxDLL;
+﻿using MessageBoxDLLClass;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -118,7 +118,7 @@ namespace DataProcessingApplicationDesign
                 string destinationPath = saveFileDialog.FileName;
                 File.Copy(filePath, destinationPath);
                 textBoxSelectPath.Text = destinationPath;
-                MessageBoxHelper.ShowMessage("File saved to the new location!", "Information");
+                MessageBoxDLL.ShowMessage("File saved to the new location!", "Information");
             }
         }
 
@@ -166,7 +166,7 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Rows[0].Cells[4].Value = "Cancel";
                             dataGridView.Rows[0].Cells[5].Value = "Start";
                             dataGridView.Refresh();
-                            MessageBoxHelper.ShowMessage("Data Cleared!", "Information"); 
+                            MessageBoxDLL.ShowMessage("Data Cleared!", "Information"); 
                         }
                         else
                         {
@@ -185,7 +185,7 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Refresh();
                         }
                         else {
-                            MessageBoxHelper.ShowMessage("Progress is not Running!", "Information");
+                            MessageBoxDLL.ShowMessage("Progress is not Running!", "Information");
                             
                         }
                         
@@ -211,7 +211,7 @@ namespace DataProcessingApplicationDesign
                                 }
                             else
                             {
-                                MessageBoxHelper.ShowMessage("No Data to Process!", "Information");
+                            MessageBoxDLL.ShowMessage("No Data to Process!", "Information");
                             }
                         }
                     else if (clickedCell.Value.ToString() == "Pause")
@@ -245,8 +245,8 @@ namespace DataProcessingApplicationDesign
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+
+            MessageBoxDLL.ShowMessage("MessageBoxDLL.ShowMessage", "Information");
         }
     }
 }
