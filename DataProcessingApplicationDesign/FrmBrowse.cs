@@ -17,6 +17,7 @@ namespace DataProcessingApplicationDesign
         {
             this.objectMainForm = objectSecondForm;
             InitializeComponent();
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -42,9 +43,10 @@ namespace DataProcessingApplicationDesign
                     DataGridViewImageColumn iconColumn = (DataGridViewImageColumn)objectMainForm.dataGridView.Columns[1];
 
                     objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, "Remove", "Cancel", "Start", fileSize);
-                    //objectMainForm.dataGridView.Rows.Add(null, fileIconBitmap, fileName, null, null, null, fileSize);
                     objectMainForm.dataGridView.Rows[0].Visible = true;
                     objectMainForm.textBoxSelectPath.Text = fileName;
+
+                    objectMainForm.UpdateStatusRichTextBox(@"Selected total files : ", 1);
                 }
                 this.Close();
             }
@@ -65,8 +67,9 @@ namespace DataProcessingApplicationDesign
                     foldersize += fileinfo.Length;
                 }
                 objectMainForm.dataGridView.Rows.Add(null, foldericon.ToBitmap(), folderpath, "Remove", "Cancel", "Start", foldersize);
-                //objectMainForm.dataGridView.Rows.Add(null, foldericon.ToBitmap(), folderpath, null, null, null, foldersize);
                 objectMainForm.textBoxSelectPath.Text = folderpath;
+
+                objectMainForm.UpdateStatusRichTextBox(@"Selected total folders : ", 1);
             }
             this.Close();
         }

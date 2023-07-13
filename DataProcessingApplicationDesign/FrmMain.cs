@@ -1,20 +1,39 @@
-﻿using MessageBoxDLLClass;
+﻿
 using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
 
 namespace DataProcessingApplicationDesign
 {
+    public delegate void LoopStatusCallback(int status);
+
     public partial class FrmMain : Form
     {
+        [DllImport("MainFileDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void ShowMessageBox(string message, string title);
+
+        [DllImport("MainFileDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PerformLoop(int iterations, LoopStatusCallback callback);
+
+        static void LoopStatusHandler(int status)
+        {
+            FrmMain form = Application.OpenForms[0] as FrmMain;
+            form.UpdateRichTextBox("Loop status: " + status + Environment.NewLine);
+        }
 
         FrmBrowse objectForm;
+
         private System.Windows.Forms.Timer timer;
         private int progressValue;
         private bool isPaused;
  
         public FrmMain()
         {
+
+
+            
             objectForm = new FrmBrowse(this);
 
             InitializeComponent();
@@ -26,8 +45,19 @@ namespace DataProcessingApplicationDesign
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold);
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView.ReadOnly = false;
+            dataGridView.ReadOnly = true;
 
+        }
+        public void UpdateRichTextBox(string text)
+        {
+            if (richTextBox.InvokeRequired)
+            {
+                richTextBox.Invoke(new Action<string>(UpdateRichTextBox), text);
+            }
+            else
+            {
+                richTextBox.AppendText(text);
+            }
         }
 
         private void InitializeProgressBar()
@@ -101,8 +131,39 @@ namespace DataProcessingApplicationDesign
             }
         }
 
+        private void dataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            for (int i = e.RowIndex; i < dataGridView.Rows.Count; i++)
+            {
+                dataGridView.Rows[i].Cells["colSrNo"].Value = (i + 1).ToString();
+            }
+        }
+
+        private void dataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["cmdBrowsRemove"].Value = "Browse";
+            e.Row.Cells["cmdClearCancel"].Value = "Clear";
+            e.Row.Cells["cmdStartPauseContinue"].Value = "Start";
+        }
+
+        public void UpdateStatusRichTextBox(string status, int number)
+        {
+            if (richTextBox.InvokeRequired)
+            {
+                richTextBox.Invoke(new Action<string, int>(UpdateStatusRichTextBox), status);
+
+            }
+            else
+            {
+                richTextBox.AppendText(status + + number + Environment.NewLine);
+                richTextBox.ScrollToCaret();
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            UpdateStatusRichTextBox(@"Application started and status is : ", 0);
+            dataGridView.AllowUserToAddRows = true;
            
         }
 
@@ -119,7 +180,7 @@ namespace DataProcessingApplicationDesign
                 string destinationPath = saveFileDialog.FileName;
                 File.Copy(filePath, destinationPath);
                 textBoxSelectPath.Text = destinationPath;
-                MessageBoxDLL.ShowMessage("File saved to the new location!", "Information");
+                ShowMessageBox("File saved to the new location!", "Information");
             }
         }
 
@@ -149,6 +210,7 @@ namespace DataProcessingApplicationDesign
                 {
                     if (clickedCell.Value.ToString().Contains("Browse"))
                     {
+                        UpdateStatusRichTextBox(@"Selecting file/folder at row : ", e.RowIndex + 1);
                         objectForm.ShowDialog();
                         dataGridView.Refresh();
                     }
@@ -167,17 +229,17 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Rows[0].Cells[4].Value = "Cancel";
                             dataGridView.Rows[0].Cells[5].Value = "Start";
                             dataGridView.Refresh();
-                            MessageBoxDLL.ShowMessage("Data Cleared!", "Information"); 
+                            ShowMessageBox("Data Cleared!", "Information"); 
                         }
                         else
                         {
-                            MessageBox.Show("Data is Already Cleared!");
+                            ShowMessageBox("Data is Already Cleared!", "Information");
                         }
                     }
                     
                     else if (clickedCell.Value.ToString() == "Cancel")
                     {
-                        if (timer != null || timer.Enabled)
+                        if (progressBar.Value > 0)
                         {
                             StopProgressBar();
                             progressBar.Value = 0;
@@ -186,7 +248,7 @@ namespace DataProcessingApplicationDesign
                             dataGridView.Refresh();
                         }
                         else {
-                            MessageBoxDLL.ShowMessage("Progress is not Running!", "Information");
+                            ShowMessageBox("Progress is not Running!", "Information");
                             
                         }
                         
@@ -204,15 +266,15 @@ namespace DataProcessingApplicationDesign
                                     if (timer == null || !timer.Enabled)
                                     {
                                         StartProgressBar();
-                                        progressBar.Text = "Started...";
                                         clickedCell.Value = "Pause";
+                                        UpdateStatusRichTextBox(@"Started thread at row : ", e.RowIndex + 1);
                                         dataGridView.Refresh();
                                     }
                                     dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
                                 }
                             else
                             {
-                            MessageBoxDLL.ShowMessage("No Data to Process!", "Information");
+                            ShowMessageBox("No Data to Process!", "Information");
                             }
                         }
                     else if (clickedCell.Value.ToString() == "Pause")
@@ -220,7 +282,7 @@ namespace DataProcessingApplicationDesign
                         if (timer != null && timer.Enabled)
                         {
                             PauseProgressBar();
-                            progressBar.Text = "Paused...";
+                            UpdateStatusRichTextBox(@"Paused thread at row : ", e.RowIndex + 1);
                         }
                         dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Continue";
                         dataGridView.Refresh();
@@ -229,7 +291,7 @@ namespace DataProcessingApplicationDesign
                     {
                         dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Pause";
                         ContinueProgressBar();
-                        progressBar.Text = "Continued...";
+                        UpdateStatusRichTextBox(@"Continued thread at row : ", e.RowIndex + 1);
                     }
                 }
 
@@ -237,16 +299,14 @@ namespace DataProcessingApplicationDesign
             }
         }
 
-        private void dataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            e.Row.Cells["cmdBrowsRemove"].Value = "Browse";
-            e.Row.Cells["cmdClearCancel"].Value = "Clear";
-            e.Row.Cells["cmdStartPauseContinue"].Value = "Start";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            PerformLoop(10, LoopStatusHandler);
         }
     }
 }

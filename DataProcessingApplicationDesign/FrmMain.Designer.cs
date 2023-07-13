@@ -33,13 +33,6 @@ namespace DataProcessingApplicationDesign
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.colSrNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIcon = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdBrowsRemove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cmdClearCancel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cmdStartPauseContinue = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.progressBar = new CircularProgressBar.CircularProgressBar();
@@ -48,12 +41,21 @@ namespace DataProcessingApplicationDesign
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSelectPath = new System.Windows.Forms.TextBox();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.colSrNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIcon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmdBrowsRemove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmdClearCancel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmdStartPauseContinue = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -91,15 +93,122 @@ namespace DataProcessingApplicationDesign
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView.Size = new System.Drawing.Size(841, 282);
+            this.dataGridView.Size = new System.Drawing.Size(841, 237);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView_DefaultValuesNeeded);
             this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
+            this.dataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView_RowsRemoved);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(277, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(296, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Data Processing Application Design";
+            // 
+            // progressBar
+            // 
+            this.progressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.CircularEaseIn;
+            this.progressBar.AnimationSpeed = 300;
+            this.progressBar.BackColor = System.Drawing.Color.Transparent;
+            this.progressBar.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.progressBar.InnerColor = System.Drawing.Color.Transparent;
+            this.progressBar.InnerMargin = 2;
+            this.progressBar.InnerWidth = -1;
+            this.progressBar.Location = new System.Drawing.Point(713, 322);
+            this.progressBar.MarqueeAnimationSpeed = 2000;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.OuterColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.progressBar.OuterMargin = -25;
+            this.progressBar.OuterWidth = 25;
+            this.progressBar.ProgressColor = System.Drawing.Color.MediumSeaGreen;
+            this.progressBar.ProgressWidth = 15;
+            this.progressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBar.Size = new System.Drawing.Size(115, 110);
+            this.progressBar.StartAngle = 270;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.SubscriptColor = System.Drawing.Color.Azure;
+            this.progressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.progressBar.SubscriptText = "";
+            this.progressBar.SuperscriptColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.progressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.progressBar.SuperscriptText = "";
+            this.progressBar.TabIndex = 7;
+            this.progressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.progressBar.Value = 68;
+            // 
+            // buttonSelectPath
+            // 
+            this.buttonSelectPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSelectPath.Location = new System.Drawing.Point(281, 371);
+            this.buttonSelectPath.Name = "buttonSelectPath";
+            this.buttonSelectPath.Size = new System.Drawing.Size(74, 25);
+            this.buttonSelectPath.TabIndex = 6;
+            this.buttonSelectPath.Text = "Save";
+            this.buttonSelectPath.UseVisualStyleBackColor = true;
+            this.buttonSelectPath.Click += new System.EventHandler(this.buttonSelectPath_Click);
+            // 
+            // checkBoxOriginalPath
+            // 
+            this.checkBoxOriginalPath.AutoSize = true;
+            this.checkBoxOriginalPath.Location = new System.Drawing.Point(68, 378);
+            this.checkBoxOriginalPath.Name = "checkBoxOriginalPath";
+            this.checkBoxOriginalPath.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxOriginalPath.TabIndex = 4;
+            this.checkBoxOriginalPath.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(84, 377);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Save on Original Path";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 343);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Path:";
+            // 
+            // textBoxSelectPath
+            // 
+            this.textBoxSelectPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSelectPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSelectPath.Location = new System.Drawing.Point(68, 341);
+            this.textBoxSelectPath.Name = "textBoxSelectPath";
+            this.textBoxSelectPath.Size = new System.Drawing.Size(287, 22);
+            this.textBoxSelectPath.TabIndex = 5;
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.BackColor = System.Drawing.Color.White;
+            this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox.Location = new System.Drawing.Point(400, 322);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.ReadOnly = true;
+            this.richTextBox.Size = new System.Drawing.Size(272, 96);
+            this.richTextBox.TabIndex = 8;
+            this.richTextBox.Text = "";
+            this.richTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // colSrNo
             // 
+            this.colSrNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colSrNo.Frozen = true;
             this.colSrNo.HeaderText = "Sr. No.";
             this.colSrNo.Name = "colSrNo";
             this.colSrNo.ReadOnly = true;
@@ -130,8 +239,7 @@ namespace DataProcessingApplicationDesign
             this.cmdBrowsRemove.Name = "cmdBrowsRemove";
             this.cmdBrowsRemove.ReadOnly = true;
             this.cmdBrowsRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdBrowsRemove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cmdBrowsRemove.Text = "Browse";
+            this.cmdBrowsRemove.Text = "";
             this.cmdBrowsRemove.ToolTipText = "Browse/Remove";
             this.cmdBrowsRemove.Width = 80;
             // 
@@ -141,7 +249,7 @@ namespace DataProcessingApplicationDesign
             this.cmdClearCancel.Name = "cmdClearCancel";
             this.cmdClearCancel.ReadOnly = true;
             this.cmdClearCancel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdClearCancel.Text = "Clear";
+            this.cmdClearCancel.Text = "";
             this.cmdClearCancel.ToolTipText = "Clear/Cancel";
             this.cmdClearCancel.Width = 80;
             // 
@@ -151,7 +259,7 @@ namespace DataProcessingApplicationDesign
             this.cmdStartPauseContinue.Name = "cmdStartPauseContinue";
             this.cmdStartPauseContinue.ReadOnly = true;
             this.cmdStartPauseContinue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmdStartPauseContinue.Text = "Start";
+            this.cmdStartPauseContinue.Text = "";
             this.cmdStartPauseContinue.ToolTipText = "Start/Pause/Continue";
             this.cmdStartPauseContinue.Width = 80;
             // 
@@ -163,99 +271,13 @@ namespace DataProcessingApplicationDesign
             this.colFileSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colFileSize.Width = 80;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(277, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Data Processing Application Design";
-            // 
-            // progressBar
-            // 
-            this.progressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.progressBar.AnimationSpeed = 300;
-            this.progressBar.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.progressBar.InnerColor = System.Drawing.Color.Transparent;
-            this.progressBar.InnerMargin = 2;
-            this.progressBar.InnerWidth = -1;
-            this.progressBar.Location = new System.Drawing.Point(718, 338);
-            this.progressBar.MarqueeAnimationSpeed = 2000;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.OuterColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.progressBar.OuterMargin = -25;
-            this.progressBar.OuterWidth = 25;
-            this.progressBar.ProgressColor = System.Drawing.Color.Blue;
-            this.progressBar.ProgressWidth = 15;
-            this.progressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBar.Size = new System.Drawing.Size(135, 114);
-            this.progressBar.StartAngle = 270;
-            this.progressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.progressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.progressBar.SubscriptText = "";
-            this.progressBar.SuperscriptColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.progressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.progressBar.SuperscriptText = "";
-            this.progressBar.TabIndex = 7;
-            this.progressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.progressBar.Value = 68;
-            // 
-            // buttonSelectPath
-            // 
-            this.buttonSelectPath.Location = new System.Drawing.Point(480, 388);
-            this.buttonSelectPath.Name = "buttonSelectPath";
-            this.buttonSelectPath.Size = new System.Drawing.Size(75, 20);
-            this.buttonSelectPath.TabIndex = 6;
-            this.buttonSelectPath.Text = "Select";
-            this.buttonSelectPath.UseVisualStyleBackColor = true;
-            this.buttonSelectPath.Click += new System.EventHandler(this.buttonSelectPath_Click);
-            // 
-            // checkBoxOriginalPath
-            // 
-            this.checkBoxOriginalPath.AutoSize = true;
-            this.checkBoxOriginalPath.Location = new System.Drawing.Point(108, 431);
-            this.checkBoxOriginalPath.Name = "checkBoxOriginalPath";
-            this.checkBoxOriginalPath.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxOriginalPath.TabIndex = 4;
-            this.checkBoxOriginalPath.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(129, 432);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Save on Original Path";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 390);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Save Path:";
-            // 
-            // textBoxSelectPath
-            // 
-            this.textBoxSelectPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSelectPath.Location = new System.Drawing.Point(108, 388);
-            this.textBoxSelectPath.Name = "textBoxSelectPath";
-            this.textBoxSelectPath.Size = new System.Drawing.Size(366, 20);
-            this.textBoxSelectPath.TabIndex = 5;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(479, 432);
+            this.button1.Location = new System.Drawing.Point(281, 409);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Test";
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -266,6 +288,7 @@ namespace DataProcessingApplicationDesign
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(891, 464);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.buttonSelectPath);
             this.Controls.Add(this.textBoxSelectPath);
@@ -294,6 +317,12 @@ namespace DataProcessingApplicationDesign
         public System.Windows.Forms.DataGridView dataGridView;
         public System.Windows.Forms.SaveFileDialog saveFileDialog1;
         public CircularProgressBar.CircularProgressBar progressBar;
+        public System.Windows.Forms.Button buttonSelectPath;
+        public System.Windows.Forms.CheckBox checkBoxOriginalPath;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox textBoxSelectPath;
+        public System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSrNo;
         private System.Windows.Forms.DataGridViewImageColumn colIcon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileName;
@@ -301,11 +330,6 @@ namespace DataProcessingApplicationDesign
         private System.Windows.Forms.DataGridViewButtonColumn cmdClearCancel;
         private System.Windows.Forms.DataGridViewButtonColumn cmdStartPauseContinue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
-        public System.Windows.Forms.Button buttonSelectPath;
-        public System.Windows.Forms.CheckBox checkBoxOriginalPath;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox textBoxSelectPath;
         private System.Windows.Forms.Button button1;
     }
 }
