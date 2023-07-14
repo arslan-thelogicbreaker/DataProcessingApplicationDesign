@@ -20,7 +20,7 @@ namespace DataProcessingApplicationDesign
         static void LoopStatusHandler(int status)
         {
             FrmMain form = Application.OpenForms[0] as FrmMain;
-            form.UpdateRichTextBox("Loop status: " + status + Environment.NewLine);
+            form.UpdateRichTextBox("Processing...: " + status + Environment.NewLine);
         }
 
         FrmBrowse objectForm;
@@ -28,7 +28,9 @@ namespace DataProcessingApplicationDesign
         private System.Windows.Forms.Timer timer;
         private int progressValue;
         private bool isPaused;
- 
+
+        public bool IsPaused { get => isPaused; set => isPaused = value; }
+
         public FrmMain()
         {
 
@@ -86,6 +88,7 @@ namespace DataProcessingApplicationDesign
             {
                 progressValue++;
                 progressBar.Value = progressValue;
+                PerformLoop(progressValue, LoopStatusHandler);
             }
             else
             {
@@ -141,6 +144,9 @@ namespace DataProcessingApplicationDesign
 
         private void dataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
+            e.Row.Cells["colIcon"].Value = null;
+            e.Row.Cells["colIcon"].Style.NullValue = null;
+
             e.Row.Cells["cmdBrowsRemove"].Value = "Browse";
             e.Row.Cells["cmdClearCancel"].Value = "Clear";
             e.Row.Cells["cmdStartPauseContinue"].Value = "Start";
@@ -169,18 +175,24 @@ namespace DataProcessingApplicationDesign
 
         private void buttonSelectPath_Click(object sender, EventArgs e)
         {
-            string filePath = textBoxSelectPath.Text.ToString();
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = "Save File";
-            saveFileDialog.FileName = Path.GetFileName(filePath);
-            saveFileDialog.Filter = "All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (textBoxSelectPath.Text != "")
             {
-                string destinationPath = saveFileDialog.FileName;
-                File.Copy(filePath, destinationPath);
-                textBoxSelectPath.Text = destinationPath;
-                ShowMessageBox("File saved to the new location!", "Information");
+                string filePath = textBoxSelectPath.Text.ToString();
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Title = "Save File";
+                saveFileDialog.FileName = Path.GetFileName(filePath);
+                saveFileDialog.Filter = "All files (*.*)|*.*";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string destinationPath = saveFileDialog.FileName;
+                    File.Copy(filePath, destinationPath);
+                    textBoxSelectPath.Text = destinationPath;
+                    ShowMessageBox("File saved to the new location!", "Information");
+                }
+            }
+            else {
+                ShowMessageBox("File is not selected.", "Select file!");
             }
         }
 
@@ -249,9 +261,7 @@ namespace DataProcessingApplicationDesign
                         }
                         else {
                             ShowMessageBox("Progress is not Running!", "Information");
-                            
-                        }
-                        
+                        } 
                     }
                 }
                 else if (clickedCell.OwningColumn.Name == "cmdStartPauseContinue")
@@ -294,19 +304,8 @@ namespace DataProcessingApplicationDesign
                         UpdateStatusRichTextBox(@"Continued thread at row : ", e.RowIndex + 1);
                     }
                 }
-
                 dataGridView.Refresh();
             }
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PerformLoop(10, LoopStatusHandler);
         }
     }
 }

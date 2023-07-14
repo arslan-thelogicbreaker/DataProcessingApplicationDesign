@@ -10,8 +10,6 @@ namespace DataProcessingApplicationDesign
         public DataGridView dataGridView;
         public TextBox textBoxSelectPath;
         FrmMain objectMainForm;
-        private int row_count = 1;
-        private bool[] isRowPaused;
 
         public FrmBrowse(FrmMain objectSecondForm)
         {
